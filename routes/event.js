@@ -1,18 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE.txt in the project root for license information.
 var express = require('express');
 var router = express.Router();
-var nforce = require('nforce');
-var authHelper = require('../helpers/auth');
-var graph = require('@microsoft/microsoft-graph-client');
-var mailto;
-var mailsubject;
-var mailbody;
-var personName;
-var roomadd;
-var roomname;
-var starttime;
-var endtime;
-//var bobmsg;
+var nforce = require('nforce');;
 function sortProperties(obj) {
     // convert object into array
     var sortable = [];
@@ -161,7 +150,7 @@ router.get('/', async function (req, res, next) {
     if (accessToken && userName) {
        
             var bobmsg;            
-            var resultData += '</table></html>';
+            var resultData;
            
             res.status(200).json({
                 bob: bobmsg,
