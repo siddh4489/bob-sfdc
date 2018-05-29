@@ -15,11 +15,6 @@ const APIAI_TOKEN = process.env.APIAI_TOKEN;
 const APIAI_SESSION_ID = process.env.APIAI_SESSION_ID;
 
 var index = require('./routes/index');
-var authorize = require('./routes/authorize');
-var mail = require('./routes/mail');
-var calendar = require('./routes/calendar');
-var contacts = require('./routes/contacts');
-var rooms = require('./routes/rooms');
 var event = require('./routes/event');
 
 var app = express();
@@ -40,11 +35,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/authorize', authorize);
-app.use('/mail', mail);
-app.use('/calendar', calendar);
-app.use('/contacts', contacts);
-app.use('/rooms', rooms);
 app.use('/event', event);
 
 // catch 404 and forward to error handler
