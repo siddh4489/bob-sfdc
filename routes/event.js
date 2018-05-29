@@ -142,21 +142,19 @@ router.get('/', async function (req, res, next) {
         return dateFormat(this, mask, utc);
     };
    
-    ;
+ 
 
-    const accessToken = await authHelper.getAccessToken(req.cookies, res);
-    const userName = req.cookies.graph_user_name;
+   
 
-    if (accessToken && userName) {
+    try{
        
-            var bobmsg;            
-            var resultData;
+          
            
-            res.status(200).json({
+          /*  res.status(200).json({
                 bob: bobmsg,
                 consoleoutput: resultData,
                 state: 
-            });
+            });*/
 
         } catch (err) {
             console.log('--err---' + err.message);
