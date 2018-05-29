@@ -1,0 +1,16 @@
+{{! Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE.txt in the project root for license information.}}
+<h2>Inbox</h2>
+<table class="table">
+  <thead class="thead-light">
+    <th scope="col">Name</th>
+    <th scope="col">Address</th>
+  </thead>
+  <tbody>
+    {{#each messages}}
+      <tr class="{{#unless this.isRead}}table-primary{{/unless}}">
+        <td>{{this.name}}</td>
+        <td>{{this.address}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
