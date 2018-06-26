@@ -11,8 +11,8 @@ var http = require('http');
 
 
 require('dotenv').config();
-const APIAI_TOKEN = process.env.APIAI_TOKEN;
-const APIAI_SESSION_ID = process.env.APIAI_SESSION_ID;
+//const APIAI_TOKEN = process.env.APIAI_TOKEN;
+//const APIAI_SESSION_ID = process.env.APIAI_SESSION_ID;
 
 var index = require('./routes/index');
 var event = require('./routes/event');
