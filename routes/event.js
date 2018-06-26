@@ -159,9 +159,9 @@ router.get('/', async function (req, res, next) {
         });
        
           
-        org.authenticate({ username: 'siddhrajsinh_atodari@symantec.com.dev2',password: '72scjp72'}, function(err, resp) {    
+       /* org.authenticate({ username: 'siddhrajsinh_atodari@symantec.com.dev2',password: '72scjp72'}, function(err, resp) {    
         if(!err) {
-        var q = "SELECT Id,Name,Amount,CloseDate,StageName FROM Opportunity Limit 10";
+        var q = "SELECT Id,Name,Amount,CloseDate,StageName FROM Opportunity where RecordtypeId='012380000005fAlAAI' Limit 10";
  
         org.query({ query: q }, function(err, resp){
             
@@ -177,6 +177,43 @@ router.get('/', async function (req, res, next) {
                   for(var i = 0; i < resp.records.length; i++){
                       var oObj = JSON.parse(JSON.stringify(resp.records[i]));
                       resultData += '<tr style="border:1px solid white;"><td>'+oObj.name+'</td><td>'+oObj.amount+'</td><td>'+oObj.stagename+'</td><td>'+oObj.closedate+'</td></tr>';
+                 }
+                  resultData += '</table></Html>';
+                  res.status(200).json({
+                bob: 'Hello Sid',
+                consoleoutput: resultData,
+                state: 'Test'
+            }); 
+                  
+              }else{
+                 res.send('No record Available');
+              }
+        });
+
+
+        } else {
+            console.log('nforce connection failed: ' + err.message);
+            oauth = resp;
+        }
+    });
+        */
+        org.authenticate({ username: 'siddhrajsinh_atodari@symantec.com.dev2',password: '72scjp72'}, function(err, resp) {    
+        if(!err) {
+        var q = "SELECT Id,Name,Amount,CloseDate,StageName, FROM Opportunity where id='0063800000dhgJ0AAI'";
+ 
+        org.query({ query: q }, function(err, resp){
+            
+              if(!err && resp.records) {
+                 console.log('---Opportunity List--->'+JSON.stringify(resp.records));
+                 //res.send(resp.records);
+                 var resultData = '<Html><table style="width:100%;border:1px solid white;">';
+                 resultData +='<col width="25%">';
+                 resultData +='<col width="25%">';
+                 resultData +='<col width="25%">';
+                 resultData +='<col width="25%">';    
+                  for(var i = 0; i < resp.records.length; i++){
+                      var oObj = JSON.parse(JSON.stringify(resp.records[i]));
+                      resultData += '<tr style="border:1px solid white;"><td>Opportunity Name</td><td>'+oObj.name+'</td><td>Amount</td><td>'+oObj.amount+'</td></tr>';
                  }
                   resultData += '</table></Html>';
                   res.status(200).json({
