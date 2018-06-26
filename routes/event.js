@@ -158,7 +158,7 @@ router.get('/', async function (req, res, next) {
             mode: 'single' // optional, 'single' or 'multi' user mode, multi default
         });
        
-      if(req.param('person').includes('top') || req.param('person').includes('10')){    
+     // if(req.param('person').includes('top') || req.param('person').includes('10')){    
         org.authenticate({ username: 'siddhrajsinh_atodari@symantec.com.dev2',password: '72scjp72'}, function(err, resp) {    
         if(!err) {
         var q = "SELECT Id,Name,Amount,CloseDate,StageName FROM Opportunity where RecordtypeId='012380000005fAlAAI' Limit 10";
@@ -196,7 +196,7 @@ router.get('/', async function (req, res, next) {
             oauth = resp;
         }
     });
-      }
+   //   }
            if(req.param('person').includes('open') || req.param('person').includes('refresh')){    
    
         org.authenticate({ username: 'siddhrajsinh_atodari@symantec.com.dev2',password: '72scjp72'}, function(err, resp) {    
