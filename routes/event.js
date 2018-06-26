@@ -170,9 +170,9 @@ router.get('/', async function (req, res, next) {
                  //res.send(resp.records);
                  var resultData = '<Html><table style="width:100%;border:1px solid black;">';
                      resultData += '<tr><th>Opportunity Name</th><th>Amount</th><th>Stage</th><th>Close Date</th></tr>';
-                 for(var i = 0; i < resp.records.length; i++){
-                      console.log('------>'+resp.records[i].Name);
-                     console.log('---0--->'+resp.records[i]['name']);
+                 console.log('---x--->'+resp.records[0].name);
+                  for(var i = 0; i < resp.records.length; i++){
+                      console.log('------>'+resp.records[i].amount);
                       console.log('--1---->'+JSON.stringify(resp.records[i]));
                       resultData += '<tr><td>'+resp.records[i].name+'</td><td>resp.records[i].amount</td><td>resp.records[i].stage</td><td>resp.records[i].closedate</td></tr>';
                  }
