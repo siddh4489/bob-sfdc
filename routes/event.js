@@ -161,17 +161,22 @@ router.get('/', async function (req, res, next) {
           
         org.authenticate({ username: 'siddhrajsinh_atodari@symantec.com.dev2',password: '72scjp72'}, function(err, resp) {    
         if(!err) {
-        var q = "SELECT Id,Name FROM Opportunity Limit 10";
+        var q = "SELECT Id,Name,Amount,CloseDate,StageName FROM Opportunity Limit 10";
  
         org.query({ query: q }, function(err, resp){
             
               if(!err && resp.records) {
-                 console.log('---Opportunity List--->'+resp.records);
+                 console.log('---Opportunity List--->'+JSON.stringify(resp.records));
                  //res.send(resp.records);
-                  
+                 var resultData = '<Html><table style="width:100%;border:1px solid black;">';
+                     resultData += '<tr><th>Opportunity Name</th><th>Amount</th><th>Stage</th><th>Close Date</th></tr>';
+                 for(var i = 0; i < resp.records.length; i++){
+                      
+                 }
+                  resultData += '</table></Html>';
                   res.status(200).json({
                 bob: 'Hello Sid',
-                consoleoutput: 'Hello Siddhraj',
+                consoleoutput: resultData,
                 state: 'Test'
             }); 
                   
