@@ -199,7 +199,7 @@ router.get('/', async function (req, res, next) {
         */
         org.authenticate({ username: 'siddhrajsinh_atodari@symantec.com.dev2',password: '72scjp72'}, function(err, resp) {    
         if(!err) {
-        var q = "SELECT Id,Name,Amount,CloseDate,StageName FROM Opportunity where id='0063800000dhgJ0AAI'";
+        var q = "SELECT Id,Name,Amount,CloseDate,StageName,Opportunity_Status__c,Channel__c FROM Opportunity where id='0063800000dhgJ0AAI'";
  
         org.query({ query: q }, function(err, resp){
             
@@ -211,10 +211,11 @@ router.get('/', async function (req, res, next) {
                  resultData +='<col width="25%">';
                  resultData +='<col width="25%">';
                  resultData +='<col width="25%">';    
-                  for(var i = 0; i < resp.records.length; i++){
-                      var oObj = JSON.parse(JSON.stringify(resp.records[i]));
+                      var oObj = JSON.parse(JSON.stringify(resp.records[0]));
                       resultData += '<tr style="border:1px solid white;"><td>Opportunity Name</td><td>'+oObj.name+'</td><td>Amount</td><td>'+oObj.amount+'</td></tr>';
-                 }
+                      resultData += '<tr style="border:1px solid white;"><td>Stage</td><td>'+oObj.stagename+'</td><td>Quote Status</td><td>'+oObj.opportunity_status__c+'</td></tr>';
+                      resultData += '<tr style="border:1px solid white;"><td>Channel</td><td>'+oObj.channel__c+'</td><td>Close Date</td><td>'+oObj.closedate+'</td></tr>';
+                 
                   resultData += '</table></Html>';
                   res.status(200).json({
                 bob: 'Hello Sid',
