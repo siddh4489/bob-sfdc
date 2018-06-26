@@ -173,7 +173,7 @@ router.get('/', async function (req, res, next) {
                  resultData +='<col width="10%">';
                  resultData +='<col width="30%">';
                  resultData +='<col width="15%">';    
-                     resultData += '<tr style="border:1px solid white;"><th ">Opportunity Name</th><th">Amount</th><th">Stage</th><th>Close Date</th></tr>';
+                     resultData += '<tr style="border:1px solid white;"><th >Opportunity Name</th><th>Amount</th><th>Stage</th><th>Close Date</th></tr>';
                   for(var i = 0; i < resp.records.length; i++){
                       var oObj = JSON.parse(JSON.stringify(resp.records[i]));
                       resultData += '<tr style="border:1px solid white;"><td>'+oObj.name+'</td><td>'+oObj.amount+'</td><td>'+oObj.stagename+'</td><td>'+oObj.closedate+'</td></tr>';
