@@ -296,7 +296,7 @@ router.get('/', async function (req, res, next) {
             oauth = resp;
         }
     });
-     }        
+          
                   
                 
                   
@@ -311,7 +311,7 @@ router.get('/', async function (req, res, next) {
             oauth = resp;
         }
     });
-           
+  }        
           /*  res.status(200).json({
                 bob: bobmsg,
                 consoleoutput: resultData,
