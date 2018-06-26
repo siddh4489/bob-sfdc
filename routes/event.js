@@ -180,7 +180,7 @@ router.get('/', async function (req, res, next) {
                  }
                   resultData += '</table></Html>';
                   res.status(200).json({
-                bob: 'Hello Sid',
+                bob: 'Retrieved top 10 Recently created opportunity',
                 consoleoutput: resultData,
                 state: 'Test'
             }); 
@@ -197,6 +197,7 @@ router.get('/', async function (req, res, next) {
         }
     });
         */
+        
         org.authenticate({ username: 'siddhrajsinh_atodari@symantec.com.dev2',password: '72scjp72'}, function(err, resp) {    
         if(!err) {
         var q = "SELECT Id,Name,Amount,CloseDate,StageName,Opportunity_Status__c,Channel__c,ForecastCategoryName,Probability FROM Opportunity where id='0063800000dhgJ0AAI'";
@@ -213,14 +214,51 @@ router.get('/', async function (req, res, next) {
                  resultData +='<col width="25%">';    
                       var oObj = JSON.parse(JSON.stringify(resp.records[0]));
                       resultData += '<tr style="border:1px solid white;"><td style="font-weight: bold;" colspan="4">Opportunity Detail</td></tr>';
-                      resultData += '<tr style="border:1px solid white;"><td style="font-weight: bold;">Opportunity Name</td><td>'+oObj.name+'</td><td style="font-weight: bold;">Amount</td><td>'+oObj.amount+'</td></tr>';
+                      resultData += '<tr style="border:1px solid white;"><td style="font-weight: bold;">Opportunity Name</td><td>'+oObj.name+'</td><td style="font-weight: bold;">Amount</td><td>'+oObj.amount+' USD</td></tr>';
                       resultData += '<tr style="border:1px solid white;"><td style="font-weight: bold;"> Stage</td><td>'+oObj.stagename+'</td><td style="font-weight: bold;">Quote Status</td><td>'+oObj.opportunity_status__c+'</td></tr>';
                       resultData += '<tr style="border:1px solid white;"><td style="font-weight: bold;">Channel</td><td>'+oObj.channel__c+'</td><td style="font-weight: bold;">Close Date</td><td>'+oObj.closedate+'</td></tr>';
-                      resultData += '<tr style="border:1px solid white;"><td style="font-weight: bold;">Forcast Category</td><td>'+oObj.forecastcategoryname+'</td><td style="font-weight: bold;">Probability</td><td>'+oObj.probability+'</td></tr>';
+                      resultData += '<tr style="border:1px solid white;"><td style="font-weight: bold;">Forcast Category</td><td>'+oObj.forecastcategoryname+'</td><td style="font-weight: bold;">Probability</td><td>'+oObj.probability+' %</td></tr>';
                  
                   resultData += '</table></Html>';
                   res.status(200).json({
-                bob: 'Hello Sid',
+                bob: 'Opportunity detail Page is Opened.',
+                consoleoutput: resultData,
+                state: 'Test'
+            }); 
+                  
+              }else{
+                 res.send('No record Available');
+              }
+        });
+
+
+        } else {
+            console.log('nforce connection failed: ' + err.message);
+            oauth = resp;
+        }
+    });
+        
+        
+        
+        org.authenticate({ username: 'siddhrajsinh_atodari@symantec.com.dev2',password: '72scjp72'}, function(err, resp) {    
+        if(!err) {
+        var q = "SELECT Id,StageName FROM Opportunity where id='0063800000dhgJ0AAI'";
+ 
+        org.query({ query: q }, function(err, resp){
+            
+              if(!err && resp.records) {
+                 console.log('---Opportunity List--->'+JSON.stringify(resp.records));
+                 //res.send(resp.records);
+                 var skillset = resp.records[0];
+                                            skillset.set('StageName', req.body.sfdc);
+                                            org.update({ sobject: skillset}, function(err, resp){
+                                              if(!err){
+                                                 return res.send('ok');
+                                              }
+                                            });
+                  
+                  res.status(200).json({
+                bob: 'Opportunity detail Page is Opened.',
                 consoleoutput: resultData,
                 state: 'Test'
             }); 
