@@ -173,10 +173,10 @@ router.get('/', async function (req, res, next) {
                  resultData +='<col width="20%">';
                  resultData +='<col width="30%">';
                  resultData +='<col width="20%">';    
-                     resultData += '<tr><th>Opportunity Name</th><th>Amount</th><th>Stage</th><th>Close Date</th></tr>';
+                     resultData += '<tr style="border:1px solid white;"><th style="border:1px solid white;">Opportunity Name</th><th style="border:1px solid white;">Amount</th><th style="border:1px solid white;">Stage</th><th style="border:1px solid white;">Close Date</th></tr>';
                   for(var i = 0; i < resp.records.length; i++){
                       var oObj = JSON.parse(JSON.stringify(resp.records[i]));
-                      resultData += '<tr><td>'+oObj.name+'</td><td>'+oObj.amount+'</td><td>'+oObj.stagename+'</td><td>'+oObj.closedate+'</td></tr>';
+                      resultData += '<tr style="border:1px solid white;"><td style="border:1px solid white;">'+oObj.name+'</td><td style="border:1px solid white;">'+oObj.amount+'</td><td style="border:1px solid white;">'+oObj.stagename+'</td><td style="border:1px solid white;">'+oObj.closedate+'</td></tr>';
                  }
                   resultData += '</table></Html>';
                   res.status(200).json({
