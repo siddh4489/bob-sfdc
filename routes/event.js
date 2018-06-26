@@ -169,10 +169,10 @@ router.get('/', async function (req, res, next) {
                  console.log('---Opportunity List--->'+JSON.stringify(resp.records));
                  //res.send(resp.records);
                  var resultData = '<Html><table style="width:100%;border:1px solid white;">';
+                 resultData +='<col width="45%">';
+                 resultData +='<col width="10%">';
                  resultData +='<col width="30%">';
-                 resultData +='<col width="20%">';
-                 resultData +='<col width="30%">';
-                 resultData +='<col width="20%">';    
+                 resultData +='<col width="15%">';    
                      resultData += '<tr style="border:1px solid white;"><th style="border:1px solid white;">Opportunity Name</th><th style="border:1px solid white;">Amount</th><th style="border:1px solid white;">Stage</th><th style="border:1px solid white;">Close Date</th></tr>';
                   for(var i = 0; i < resp.records.length; i++){
                       var oObj = JSON.parse(JSON.stringify(resp.records[i]));
