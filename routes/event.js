@@ -167,7 +167,13 @@ router.get('/', async function (req, res, next) {
             
               if(!err && resp.records) {
                  console.log('---Opportunity List--->'+resp.records);
-                 res.send(resp.records);
+                 //res.send(resp.records);
+                  res.status(200).json({
+                bob: 'Hello Sid',
+                consoleoutput: 'Hello Siddhraj',
+                state: 
+            }); 
+                  
               }else{
                  res.send('No record Available');
               }
