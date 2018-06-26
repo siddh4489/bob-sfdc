@@ -172,6 +172,7 @@ router.get('/', async function (req, res, next) {
                      resultData += '<tr><th>Opportunity Name</th><th>Amount</th><th>Stage</th><th>Close Date</th></tr>';
                   for(var i = 0; i < resp.records.length; i++){
                       var oObj = JSON.parse(resp.records[i]);
+                      console.log('----->'+oObj.name);
                       resultData += '<tr><td>'+oObj.name+'</td><td>'+oObj.amount+'</td><td>'+oObj.stagename+'</td><td>'+oObj.closedate+'</td></tr>';
                  }
                   resultData += '</table></Html>';
