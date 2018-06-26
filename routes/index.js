@@ -7,7 +7,7 @@ var authHelper = require('../helpers/auth');
 router.get('/', async function(req, res, next) {
   let parms = { title: 'Home', active: { home: true } };
 
-  const accessToken = await authHelper.getAccessToken(req.cookies, res);
+  /*const accessToken = await authHelper.getAccessToken(req.cookies, res);
   const userName = req.cookies.graph_user_name;
 
   if (accessToken && userName) {
@@ -16,7 +16,7 @@ router.get('/', async function(req, res, next) {
   } else {
     parms.signInUrl = authHelper.getAuthUrl();
     parms.debug = parms.signInUrl;
-  }
+  }*/
 
   res.render('index', parms);
 });
