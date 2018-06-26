@@ -238,7 +238,7 @@ router.get('/', async function (req, res, next) {
             oauth = resp;
         }
     }); 
-        
+           }   
   if(req.param('person').includes('update') || req.param('person').includes('stage')){    
         
         org.authenticate({ username: 'siddhrajsinh_atodari@symantec.com.dev2',password: '72scjp72'}, function(err, resp) {    
