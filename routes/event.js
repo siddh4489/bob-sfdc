@@ -212,9 +212,9 @@ router.get('/', async function (req, res, next) {
                  resultData +='<col width="25%">';
                  resultData +='<col width="25%">';    
                       var oObj = JSON.parse(JSON.stringify(resp.records[0]));
-                      resultData += '<tr style="border:1px solid white;"><td>Opportunity Name</td><td>'+oObj.name+'</td><td>Amount</td><td>'+oObj.amount+'</td></tr>';
-                      resultData += '<tr style="border:1px solid white;"><td>Stage</td><td>'+oObj.stagename+'</td><td>Quote Status</td><td>'+oObj.opportunity_status__c+'</td></tr>';
-                      resultData += '<tr style="border:1px solid white;"><td>Channel</td><td>'+oObj.channel__c+'</td><td>Close Date</td><td>'+oObj.closedate+'</td></tr>';
+                      resultData += '<tr style="border:1px solid white;"><td style="font-weight: bold;">Opportunity Name</td><td>'+oObj.name+'</td><td style="font-weight: bold;">Amount</td><td>'+oObj.amount+'</td></tr>';
+                      resultData += '<tr style="border:1px solid white;"><td style="font-weight: bold;"> Stage</td><td>'+oObj.stagename+'</td><td style="font-weight: bold;">Quote Status</td><td>'+oObj.opportunity_status__c+'</td></tr>';
+                      resultData += '<tr style="border:1px solid white;"><td style="font-weight: bold;">Channel</td><td>'+oObj.channel__c+'</td><td style="font-weight: bold;">Close Date</td><td>'+oObj.closedate+'</td></tr>';
                  
                   resultData += '</table></Html>';
                   res.status(200).json({
