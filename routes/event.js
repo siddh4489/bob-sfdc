@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE.txt in the project root for license information.
 var express = require('express');
 var router = express.Router();
-var nforce = require('nforce');;
+var nforce = require('nforce');
 function sortProperties(obj) {
     // convert object into array
     var sortable = [];
@@ -24,7 +24,7 @@ function sortProperties(obj) {
 router.get('/', async function (req, res, next) {
     
     
-    
+     console.log('--- Sid Is Here--->');
     
 
     var dateFormat = function () {
@@ -147,8 +147,38 @@ router.get('/', async function (req, res, next) {
    
     if(true){
     try{
+        
+         var oauth;
+       org = nforce.createConnection({
+            clientId: '3MVG9ZL0ppGP5UrDTxV.HFq7m7RIl8wqMIHluq9ouUtkBlPvuGYfk4A81HALFbAlLywsgdrOHqMRQnyeZxg26',
+            clientSecret: '6029148571751603830',
+            redirectUri: 'https://localhost:81/sf/index.html',
+            //apiVersion: config.api.apiVersion,  // optional, defaults to current salesforce API version
+            environment: 'sandbox',  // optional, salesforce 'sandbox' or 'production', production default
+            mode: 'single' // optional, 'single' or 'multi' user mode, multi default
+        });
        
           
+        org.authenticate({ username: 'siddhrajsinh_atodari@symantec.com.dev2',password: '72scjp72'}, function(err, resp) {    
+        if(!err) {
+        var q = "SELECT Id,Name FROM Opportunity Limit 10";
+ 
+        org.query({ query: q }, function(err, resp){
+            
+              if(!err && resp.records) {
+                 console.log('---Opportunity List--->'+resp.records);
+                 res.send(resp.records);
+              }else{
+                 res.send('No record Available');
+              }
+        });
+
+
+        } else {
+            console.log('nforce connection failed: ' + err.message);
+            oauth = resp;
+        }
+    });
            
           /*  res.status(200).json({
                 bob: bobmsg,
