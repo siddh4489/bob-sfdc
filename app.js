@@ -67,7 +67,7 @@ io.on('connection', function (socket) {
   console.log("connected");  
 });
 
-const apiai = require('apiai')(APIAI_TOKEN);
+//const apiai = require('apiai')(APIAI_TOKEN);
 
 io.on('connection', function(socket) {
   socket.on('chat message', (text) => {
