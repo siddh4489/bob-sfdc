@@ -24,7 +24,7 @@ function sortProperties(obj) {
 router.get('/', async function (req, res, next) {
     
     
-     console.log('--- Sid Is Here--->');
+     console.log('--- Sid Is Here--->'+req.param('person'));
     
 
     var dateFormat = function () {
