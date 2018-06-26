@@ -168,13 +168,9 @@ router.get('/', async function (req, res, next) {
               if(!err && resp.records) {
                  console.log('---Opportunity List--->'+JSON.stringify(resp.records));
                  //res.send(resp.records);
-                 var resultData = '<Html><table style="width:100%;border:1px solid black;">';
+                 var resultData = '<Html><table style="width:100%;border:1px solid white;">';
                      resultData += '<tr><th>Opportunity Name</th><th>Amount</th><th>Stage</th><th>Close Date</th></tr>';
                   for(var i = 0; i < resp.records.length; i++){
-                      
-                      console.log('0----->'+resp.records[i]);
-                      console.log('1----->'+resp.records[i].name);
-                      console.log('1----->'+resp.records[i].Amount);
                       var oObj = JSON.parse(JSON.stringify(resp.records[i]));
                       resultData += '<tr><td>'+oObj.name+'</td><td>'+oObj.amount+'</td><td>'+oObj.stagename+'</td><td>'+oObj.closedate+'</td></tr>';
                  }
