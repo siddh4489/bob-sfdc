@@ -161,7 +161,7 @@ router.get('/', async function (req, res, next) {
       if(req.param('person').includes('top10') || req.param('person').includes('10')){    
         org.authenticate({ username: 'siddhrajsinh_atodari@symantec.com.dev2',password: '72scjp72'}, function(err, resp) {    
         if(!err) {
-        var q = "SELECT Id,Name,Amount,CloseDate,StageName FROM Opportunity where RecordtypeId='012380000005fAlAAI' Limit 10";
+        var q = "SELECT Id,Name,Amount,CloseDate,StageName FROM Opportunity where RecordtypeId='012380000005fAlAAI' AND amount != null Limit 10";
  
         org.query({ query: q }, function(err, resp){
             
