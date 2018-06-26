@@ -158,8 +158,8 @@ router.get('/', async function (req, res, next) {
             mode: 'single' // optional, 'single' or 'multi' user mode, multi default
         });
        
-          
-       /* org.authenticate({ username: 'siddhrajsinh_atodari@symantec.com.dev2',password: '72scjp72'}, function(err, resp) {    
+      if(req.param('person').includes('top') || req.param('person').includes('10')){    
+        org.authenticate({ username: 'siddhrajsinh_atodari@symantec.com.dev2',password: '72scjp72'}, function(err, resp) {    
         if(!err) {
         var q = "SELECT Id,Name,Amount,CloseDate,StageName FROM Opportunity where RecordtypeId='012380000005fAlAAI' Limit 10";
  
@@ -196,8 +196,9 @@ router.get('/', async function (req, res, next) {
             oauth = resp;
         }
     });
-        */
-     /*   
+      }
+           if(req.param('person').includes('open') || req.param('person').includes('refresh')){    
+   
         org.authenticate({ username: 'siddhrajsinh_atodari@symantec.com.dev2',password: '72scjp72'}, function(err, resp) {    
         if(!err) {
         var q = "SELECT Id,Name,Amount,CloseDate,StageName,Opportunity_Status__c,Channel__c,ForecastCategoryName,Probability FROM Opportunity where id='0063800000dhgJ0AAI'";
@@ -236,9 +237,9 @@ router.get('/', async function (req, res, next) {
             console.log('nforce connection failed: ' + err.message);
             oauth = resp;
         }
-    }); */
+    }); 
         
-        
+  if(req.param('person').includes('update') || req.param('person').includes('stage')){    
         
         org.authenticate({ username: 'siddhrajsinh_atodari@symantec.com.dev2',password: '72scjp72'}, function(err, resp) {    
         if(!err) {
@@ -257,6 +258,7 @@ router.get('/', async function (req, res, next) {
                   
                   org.authenticate({ username: 'siddhrajsinh_atodari@symantec.com.dev2',password: '72scjp72'}, function(err, resp) {    
         if(!err) {
+            
         var q = "SELECT Id,Name,Amount,CloseDate,StageName,Opportunity_Status__c,Channel__c,ForecastCategoryName,Probability FROM Opportunity where id='0063800000dhgJ0AAI'";
  
         org.query({ query: q }, function(err, resp){
@@ -294,7 +296,7 @@ router.get('/', async function (req, res, next) {
             oauth = resp;
         }
     });
-                  
+     }        
                   
                 
                   
