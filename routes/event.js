@@ -254,7 +254,7 @@ router.get('/', async function (req, res, next) {
                                             });
                   
                   
-                  org.authenticate({ username: 'siddhrajsinh_atodari@symantec.com.dev2',password: '72scjp72'}, function(err, resp) {    
+                  org.authenticate({ username: 'sid.demo@yahoo.com',password: 'Siddh@4489'}, function(err, resp) {    
         if(!err) {
             
         var q = "SELECT Id,Name,Amount,CloseDate,StageName FROM Opportunity where id='0060I00000UK8aj'";
